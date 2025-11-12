@@ -77,31 +77,40 @@
             color: #333;
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
             min-height: 100vh;
-            overflow-x: hidden; /* Решает проблему смещения вправо */
+            overflow-x: hidden; 
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            width: 100%; /* Добавляем полную ширину */
         }
         
         .header {
             text-align: center;
             padding: 60px 20px;
-            color: #333; 
+            color: #333;
+            width: 100%; /* Обеспечиваем полную ширину */
+            box-sizing: border-box; /* Учитываем padding в ширине */
         }
         
         .header h1 {
             font-size: 3rem;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            word-wrap: break-word; /* Перенос длинных слов */
+            overflow-wrap: break-word; /* Современная альтернатива */
+            hyphens: auto; /* Автоматическая расстановка переносов */
+            max-width: 100%; /* Не превышает ширину контейнера */
         }
         
         .header p {
             font-size: 1.3rem;
             margin-bottom: 30px;
             opacity: 0.9;
+            max-width: 100%; /* То же самое для параграфа */
+            word-wrap: break-word;
         }
         
         .cta-button {
@@ -114,8 +123,8 @@
             font-size: 1.2rem;
             font-weight: bold;
             transition: transform 0.3s, box-shadow 0.3s;
-            max-width: 100%; /* Предотвращает выпирание кнопки */
-            word-wrap: break-word; /* Перенос длинного текста */
+            max-width: 100%;
+            word-wrap: break-word;
         }
         
         .cta-button:hover {
@@ -150,7 +159,7 @@
         
         .screenshots {
             margin: 60px 0;
-            width: 100%; /* Обеспечивает правильную ширину */
+            width: 100%;
         }
         
         .screenshot-grid {
@@ -169,8 +178,8 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             border: 1px solid #ddd;
-            display: block; /* Убирает лишние отступы */
-            margin: 0 auto; /* Центрирование */
+            display: block;
+            margin: 0 auto;
         }
         
         .screenshot-caption {
@@ -225,6 +234,9 @@
             color: #333;
             margin-bottom: 20px;
             font-size: 2.2rem;
+            word-wrap: break-word; /* Добавляем для всех заголовков */
+            max-width: 100%;
+
         }
         
         h3 {
@@ -232,44 +244,47 @@
             margin-bottom: 10px;
         }
         
-        /* @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .step {
-                flex-direction: column;
-                text-align: center;
-            }
-        } */
+
         @media (max-width: 768px) {
+            .header {
+                padding: 40px 15px; /* Уменьшаем отступы для мобильных */
+            }
+            
             .header h1 {
                 font-size: 2rem;
+                padding: 0 10px; /* Добавляем боковые отступы */
+                margin-left: auto; /* Центрируем */
+                margin-right: auto; /* Центрируем */
+                text-align: center; /* Убеждаемся в центрировании */
+                line-height: 1.3; /* Улучшаем межстрочный интервал */
+            }
+            
+            .header p {
+                padding: 0 10px; /* То же самое для параграфа */
             }
             
             .step {
-                flex-direction: row; /* Сохраняем горизонтальное расположение */
-                text-align: left; /* Выравнивание по левому краю */
+                flex-direction: row;
+                text-align: left;
             }
             
             .screenshot-grid {
-                grid-template-columns: 1fr; /* Одна колонка на мобильных */
-                padding: 0 10px; /* Добавляем отступы по бокам */
+                grid-template-columns: 1fr;
+                padding: 0 10px;
             }
             
             .cta-button {
-                padding: 12px 24px; /* Уменьшаем отступы */
-                font-size: 1.1rem; /* Немного уменьшаем шрифт */
-                width: auto; /* Автоматическая ширина */
-                display: inline-block; /* Сохраняем кнопочный вид */
+                padding: 12px 24px;
+                font-size: 1.1rem;
+                width: auto;
+                display: inline-block;
             }
             
             .content {
-                padding: 30px 20px; /* Уменьшаем отступы контента */
-                margin: 20px 10px; /* Добавляем отступы по бокам */
+                padding: 30px 20px;
+                margin: 20px 10px;
             }
             
-            /* Дополнительные исправления для мобильных */
             body {
                 padding: 0 10px;
             }
@@ -277,9 +292,15 @@
             .container {
                 padding: 10px;
             }
+            /* Исправляем выпирание всех заголовков */
+            h2, h3 {
+                padding: 0 10px;
+                word-wrap: break-word;
+                max-width: 100%;
+            }
         }
         
-        /* Дополнительные исправления для очень маленьких экранов */
+  
         @media (max-width: 480px) {
             .cta-button {
                 font-size: 1rem;
@@ -294,6 +315,10 @@
                 width: 35px;
                 height: 35px;
                 font-size: 0.9rem;
+            }
+            .header h1 {
+                font-size: 1.8rem; /* Еще меньше на очень маленьких экранах */
+                padding: 0 5px;
             }
         }
 
@@ -457,10 +482,12 @@
             
             
             <section style="text-align: center; margin: 100px 0;">
-                <h2>Начните получать подходящие задачи</h2>
+                <h2>Получайте подходящие фриланс задачи</h2>
                 <p style="margin-bottom: 30px; font-size: 1.2rem;">Присоединяйтесь к сотням фрилансеров, которые уже используют умный подбор задач</p>
                 <a href="https://t.me/FreelanceFastTrackerBot" class="cta-button">🤖 Открыть @FreelanceFastTrackerBot</a>
             </section>
+
+            
         </div>
 
         <footer class="footer">
